@@ -1,0 +1,32 @@
+@use "sass:color";
+
+/* Viewport */
+$tablet-width: 48rem;
+$desktop-width: 75rem;
+
+/* Color vars */
+$white: hsl(0, 0%, 100%);
+$black: hsl(208, 24%, 11%);
+$light-gray: hsl(220, 12%, 95%);
+$dark-gray: hsl(210, 7%, 48%);
+
+$denim-blue-gray: hsl(190, 17%, 74%);
+$denim-navy: hsl(212, 42%, 40%);
+$denim-gray: hsl(213, 8%, 77%);
+$denim-coal: hsl(180, 1%, 18%);
+$denim-light-gray: hsl(0, 0%, 93%);
+$denim-blue: hsl(208, 67%, 56%);
+
+$heavy-text-color: $black;
+$faint-text-color: $dark-gray;
+
+$body-bg-color: $white;
+$alt-bg-color: $light-gray;
+
+$state-color: color.adjust($denim-blue, $lightness: -10%);
+$stripes-color: color.adjust($heavy-text-color, $alpha: -0.3);
+
+/* Fonts */
+$work-sans-400-500-font-family: "Work Sans", "Work Sans fallback", "Verdana", sans-serif;
+$work-sans-700-800-font-family: "Work Sans", "Work Sans fallback", "Tahoma", "Verdana", sans-serif;
+$anton-font-family: "Anton", "Impact", "Anton fallback", sans-serif;

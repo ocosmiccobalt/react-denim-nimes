@@ -1,0 +1,163 @@
+@use "./variables" as *;
+
+@mixin reset-list() {
+  padding: 0;
+  list-style: none;
+}
+
+@mixin break-word() {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+@mixin title-font() {
+  font-family: $work-sans-700-800-font-family;
+  font-weight: 700;
+  font-size: 1.625em;
+  line-height: 1.154;
+
+  @media (min-width: $tablet-width) {
+    font-size: 1.75em;
+    line-height: 1.179;
+  }
+
+  @media (min-width: $desktop-width) {
+    font-size: 2em;
+    line-height: 1.188;
+  }
+}
+
+@mixin label-with-background($block) {
+  .#{$block}__label--bg {
+    position: relative;
+
+    &[for="blue-gray"],
+    &[for="blue-gray-to-cart"] {
+      color: $denim-blue-gray;
+    }
+
+    &[for="navy"],
+    &[for="navy-to-cart"] {
+      color: $denim-navy;
+    }
+
+    &[for="gray"],
+    &[for="gray-to-cart"] {
+      color: $denim-gray;
+    }
+
+    &[for="coal"],
+    &[for="coal-to-cart"] {
+      color: $denim-coal;
+    }
+
+    &[for="light-gray"],
+    &[for="light-gray-to-cart"] {
+      color: $denim-light-gray;
+    }
+
+    &[for="blue"],
+    &[for="blue-to-cart"] {
+      color: $denim-blue;
+    }
+
+    &::before {
+      content: "";
+
+      display: block;
+      width: 1.375em;
+      height: 1.375em;
+
+      border: 0.063em solid transparent;
+      border-radius: 50%;
+    }
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      width: 1em;
+      height: 1em;
+      margin: auto;
+
+      background-color: currentColor;
+      border-radius: 50%;
+    }
+  }
+
+  .#{$block}__input:checked + .#{$block}__label--bg::before {
+    border-color: currentColor;
+  }
+
+  .#{$block}__input:focus + .#{$block}__label--bg {
+    outline: 0.125em solid $state-color;
+  }
+
+  .#{$block}__input:focus:not(:focus-visible) + .#{$block}__label--bg {
+    outline: none;
+  }
+
+  .#{$block}__input:focus-visible + .#{$block}__label--bg {
+    outline: 0.125em solid $state-color;
+  }
+
+  .#{$block}__input:focus:checked + .#{$block}__label--bg::before {
+    background-color: currentColor;
+  }
+
+  .#{$block}__input:disabled + .#{$block}__label--bg {
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        $stripes-color,
+        $stripes-color 0.063em,
+        rgba(255, 255, 255, 0) 0.125em,
+        rgba(255, 255, 255, 0) 0.375em
+      );
+
+    cursor: not-allowed;
+  }
+
+  .#{$block}__input:disabled:checked + .#{$block}__label--bg {
+    background-image: none;
+  }
+}
+
+@mixin label-with-text($block) {
+  .#{$block}__label--text {
+    font-weight: inherit;
+    font-size: 0.875em;
+    line-height: inherit;
+    color: $faint-text-color;
+  }
+
+  .#{$block}__input:checked + .#{$block}__label--text {
+    color: $heavy-text-color;
+  }
+
+  .#{$block}__input:focus + .#{$block}__label--text {
+    outline: 0.125em solid $state-color;
+  }
+
+  .#{$block}__input:focus:not(:focus-visible) + .#{$block}__label--text {
+    outline: none;
+  }
+
+  .#{$block}__input:focus-visible + .#{$block}__label--text {
+    outline: 0.125em solid $state-color;
+  }
+
+  .#{$block}__input:focus:checked + .#{$block}__label--text {
+    text-shadow: 0.071em 0.071em 0 $faint-text-color;
+    box-shadow: inset 0 0 0 0.125rem $denim-light-gray, inset 0 0 0 0.25rem $faint-text-color;
+  }
+
+  .#{$block}__input:disabled + .#{$block}__label--text {
+    cursor: not-allowed;
+  }
+}

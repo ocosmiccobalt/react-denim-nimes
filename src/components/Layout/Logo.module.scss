@@ -1,0 +1,32 @@
+@use "../../assets/sass/variables" as *;
+
+.logo {
+  padding: 0.75em;
+
+  font-family: $work-sans-700-800-font-family;
+  font-weight: 800;
+  font-size: 1.5em;
+  line-height: inherit;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+
+  &[href] {
+    border-radius: 0.2em;
+
+    cursor: pointer;
+    transition: 220ms ease-in-out;
+  }
+
+  &:focus {
+    outline: 0.25rem solid $state-color;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 0.25rem solid $state-color;
+  }
+}

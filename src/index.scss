@@ -1,0 +1,148 @@
+@use "./assets/sass/normalize";
+@use "./assets/sass/variables" as *;
+@use "./assets/sass/mixins" as *;
+
+@font-face {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url("/fonts/work-sans-latin-regular.woff2") format("woff2"),
+    url("/fonts/work-sans-latin-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src:
+    url("/fonts/work-sans-latin-500.woff2") format("woff2"),
+    url("/fonts/work-sans-latin-500.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    url("/fonts/work-sans-latin-700.woff2") format("woff2"),
+    url("/fonts/work-sans-latin-700.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src:
+    url("/fonts/work-sans-latin-800.woff2") format("woff2"),
+    url("/fonts/work-sans-latin-800.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Anton";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url("/fonts/anton-5-glyphs-regular.woff2") format("woff2"),
+    url("/fonts/anton-5-glyphs-regular.woff") format("woff");
+  unicode-range: U+0044-0045, U+0049, U+004D-004E;
+}
+
+@font-face {
+  font-family: "Work Sans fallback";
+  size-adjust: 111.73000000000003%;
+  ascent-override: 83%;
+  src: local("Arial");
+}
+
+@font-face {
+  font-family: "Anton fallback";
+  size-adjust: 91.63000000000004%;
+  ascent-override: 140%;
+  src: local("Arial");
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  min-width: 20rem;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  font-family: $work-sans-400-500-font-family;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.173;
+  color: $heavy-text-color;
+
+  @include break-word();
+
+  background-color: $body-bg-color;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+}
+
+@supports (display: grid) {
+  .page {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+
+    height: auto;
+    min-height: 100%;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  border: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+@media (min-width: $desktop-width) {
+  .wrapper {
+    max-width: $desktop-width;
+    margin: 0 auto;
+  }
+}

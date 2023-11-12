@@ -1,0 +1,15 @@
+@use "../../assets/sass/variables" as *;
+
+.page-footer {
+  flex-shrink: 0;
+
+  color: $body-bg-color;
+
+  background-color: $heavy-text-color;
+}
+
+@supports (display: grid) {
+  .page-footer {
+    grid-row: 3;
+  }
+}
