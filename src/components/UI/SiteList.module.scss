@@ -1,0 +1,79 @@
+@use "../../assets/sass/variables" as *;
+@use "../../assets/sass/mixins" as *;
+
+.site-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+  margin: 0;
+
+  @include reset-list();
+}
+
+.site-list__item {
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+
+.site-list__link {
+  display: block;
+  max-width: 6.25em;
+  padding: 1.25em 0.938em;
+  padding-top: 1.563em;
+  padding-right: 0.625em;
+
+  font: inherit;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+
+  border-radius: 0.2em;
+
+  &[href] {
+    cursor: pointer;
+    transition: 220ms ease-in-out;
+  }
+
+  &:focus {
+    outline: 0.125em solid $state-color;
+    outline-offset: -0.125em;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 0.125em solid $state-color;
+    outline-offset: -0.125em;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .site-list__item {
+    margin-right: 0.313em;
+  }
+
+  .site-list__link {
+    padding-right: 0.938em;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .site-list {
+    display: block;
+  }
+
+  .site-list__item {
+    margin-right: 0;
+  }
+
+  .site-list__link {
+    max-width: 100%;
+    padding-top: 0.875em;
+    padding-bottom: 0.75em;
+
+    text-align: left;
+  }
+}
