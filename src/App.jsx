@@ -7,7 +7,7 @@ function App() {
     <>
       <PageHeader />
       <PageMain>
-        <h1>Denim online store</h1>
+        Products
       </PageMain>
       <PageFooter />
     </>
