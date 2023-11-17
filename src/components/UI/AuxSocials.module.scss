@@ -1,0 +1,89 @@
+@use "../../assets/sass/variables" as *;
+@use "../../assets/sass/mixins" as *;
+
+.aux-socials {
+  display: none;
+  margin: 0;
+
+  @include reset-list();
+}
+
+@media (min-width: $tablet-width) {
+  .aux-socials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    width: 50%;
+    padding-top: 0.875em;
+  }
+
+  .aux-socials__item {
+    flex-shrink: 0;
+    flex-basis: auto;
+
+    margin-left: 0.313em;
+  }
+
+  .aux-socials__link {
+    display: block;
+    max-width: 7.857em;
+    padding: 1.071em;
+
+    font: inherit;
+    font-size: 0.875em;
+    text-decoration: none;
+    color: inherit;
+
+    border-radius: 0.2em;
+
+    &[href] {
+      cursor: pointer;
+      transition: 220ms ease-in-out;
+    }
+
+    &:focus {
+      outline: 0.125em solid $state-color;
+      outline-offset: -0.125em;
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 0.125em solid $state-color;
+      outline-offset: -0.125em;
+    }
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .aux-socials {
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    width: 8.333%;
+    padding-top: 0;
+  }
+
+  .aux-socials__item {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .aux-socials__link {
+    max-width: 100%;
+    padding-left: 0.357em;
+
+    text-align: right;
+  }
+
+  @supports (display: grid) {
+    .aux-socials {
+      width: auto;
+    }
+  }
+}
