@@ -1,0 +1,118 @@
+@use "sass:color";
+@use "../../assets/sass/variables" as *;
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 10ch;
+  max-width: 16.25em;
+  min-height: 4em;
+  padding: 1.375em 1em 1.438em;
+
+  font-weight: 700;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: top;
+  color: $body-bg-color;
+
+  background-color: $heavy-text-color;
+  border: none;
+
+  cursor: pointer;
+  transition: 220ms ease-in-out;
+
+  &:hover,
+  &:active {
+    background-color: color.scale($heavy-text-color, $lightness: 20%);
+  }
+
+  &:focus {
+    outline: 0.25em solid $state-color;
+    outline-offset: 0.25em;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 0.25em solid $state-color;
+    outline-offset: 0.25em;
+  }
+
+  &[disabled] {
+    background-color: $denim-gray;
+
+    cursor: not-allowed;
+  }
+}
+
+.button--intro {
+  min-width: 12.75em;
+}
+
+.button--collection {
+  min-width: 9.25em;
+  min-height: 3.625em;
+  padding-top: 1.188em;
+  padding-bottom: 1.25em;
+}
+
+.button--filter {
+  display: flex;
+
+  width: 18.125em;
+  max-width: none;
+}
+
+.button--products {
+  min-width: 11.063em;
+}
+
+.button--product-form {
+  min-width: 12.5em;
+}
+
+@media (min-width: $tablet-width) {
+  .button--intro {
+    min-width: 13.688em;
+    max-width: 100%;
+  }
+
+  .button--collection {
+    max-width: 100%;
+  }
+
+  .button--filter {
+    width: 100%;
+
+    &:focus {
+      outline-offset: -0.25em;
+    }
+
+    &:focus-visible {
+      outline-offset: -0.25em;
+    }
+  }
+
+  .button--products {
+    min-width: 12.875em;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .button--collection {
+    min-width: 12.5em;
+    min-height: 4em;
+    padding-top: 1.375em;
+    padding-bottom: 1.438em;
+  }
+
+  .button--products {
+    min-width: 12.5em;
+  }
+}
