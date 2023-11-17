@@ -30,3 +30,10 @@
     outline: 0.25rem solid $state-color;
   }
 }
+
+@media (min-width: $tablet-width) {
+  .logo {
+    padding-top: 0.792em;
+    padding-bottom: 0.833em;
+  }
+}
