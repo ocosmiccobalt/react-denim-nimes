@@ -1,0 +1,360 @@
+@use "../../../assets/sass/variables" as *;
+
+.intro {
+  background-color: $alt-bg-color;
+}
+
+.intro__wrapper {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 0.938em;
+  padding-top: 1em;
+}
+
+.intro__inner {
+  flex-shrink: 0;
+  flex-basis: auto;
+
+  max-width: 100%;
+  padding-top: 1.625em;
+  padding-bottom: 3.125em;
+
+  text-align: center;
+}
+
+.intro__tagline {
+  margin: 0;
+
+  font-weight: 400;
+  font-size: 1.125em;
+  color: $faint-text-color;
+}
+
+.intro__name {
+  margin: 0;
+  margin-bottom: 0.267em;
+
+  font-family: $anton-font-family;
+  font-weight: 400;
+  font-size: 5.375em;
+  line-height: 1.2;
+}
+
+.intro__skip {
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+
+.intro__hero {
+  position: relative;
+
+  flex-shrink: 0;
+  flex-basis: auto;
+  order: -1;
+  align-self: center;
+
+  width: 69.655%;
+  max-width: 24.688em;
+  margin: 1.25em auto;
+
+  &::before,
+  &::after {
+    content: "";
+
+    position: absolute;
+
+    width: 6.813em;
+    height: 5em;
+  }
+
+  &::before {
+    top: -1.25em;
+    left: -1.25em;
+
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        $stripes-color,
+        $stripes-color 0.063em,
+        rgba(255, 255, 255, 0) 0.125em,
+        rgba(255, 255, 255, 0) 0.375em
+      );
+  }
+
+  &::after {
+    right: -1.25em;
+    bottom: -1.25em;
+
+    background-image:
+      repeating-linear-gradient(
+        -45deg,
+        $stripes-color,
+        $stripes-color 0.063em,
+        rgba(255, 255, 255, 0) 0.125em,
+        rgba(255, 255, 255, 0) 0.375em
+      );
+  }
+}
+
+.intro__image {
+  position: relative;
+  z-index: 1;
+
+  display: block;
+  width: 100%;
+}
+
+.intro__socials {
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+
+@media (min-width: $tablet-width) {
+  .intro__wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    padding: 0 3.9%;
+    padding-top: 0.188em;
+    padding-bottom: 1.625em;
+  }
+
+  .intro__inner {
+    order: 1;
+    align-self: flex-end;
+
+    width: 15.938em;
+    max-width: none;
+    margin-left: calc(50% - 15.938em);
+    margin-bottom: 2.438em;
+    padding: 0;
+    padding-left: 0.25em;
+
+    text-align: left;
+  }
+
+  .intro__tagline {
+    margin-bottom: 0.167em;
+  }
+
+  .intro__name {
+    margin-bottom: 0.398em;
+    margin-left: -0.041em;
+
+    font-size: 6.125em;
+  }
+
+  .intro__skip {
+    order: 3;
+  }
+
+  .intro__hero {
+    order: 2;
+    align-self: center;
+
+    width: 20.25em;
+    max-width: none;
+    min-height: 19.938em;
+    margin: 0;
+    margin-left: 0.938em;
+    margin-right: calc(50% - 20.25em - 0.938em);
+    margin-bottom: 2.438em;
+    padding: 0 1.875em;
+
+    &::before,
+    &::after {
+      width: 8.813em;
+      height: 6.5em;
+    }
+
+    &::before {
+      top: -1.875em;
+      left: 0;
+
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          $stripes-color,
+          $stripes-color 0.063em,
+          rgba(255, 255, 255, 0) 0.125em,
+          rgba(255, 255, 255, 0) 0.5em
+        );
+    }
+
+    &::after {
+      right: 0;
+      bottom: -1.875em;
+
+      background-image:
+        repeating-linear-gradient(
+          -45deg,
+          $stripes-color,
+          $stripes-color 0.063em,
+          rgba(255, 255, 255, 0) 0.125em,
+          rgba(255, 255, 255, 0) 0.5em
+        );
+    }
+  }
+
+  .intro__image {
+    aspect-ratio: var(--tablet-aspect-ratio);
+  }
+
+  .intro__socials {
+    order: 4;
+
+    margin-left: auto;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .intro__wrapper {
+    padding: 0;
+  }
+
+  .intro__inner {
+    order: 2;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 33.333%;
+    margin: 0;
+    padding-top: 3.125em;
+    padding-bottom: 3.125em;
+    padding-left: 5.313em;
+  }
+
+  .intro__tagline {
+    flex-shrink: 0;
+    flex-basis: auto;
+
+    max-width: 100%;
+    margin-top: 1em;
+    margin-bottom: 0;
+  }
+
+  .intro__name {
+    flex-shrink: 0;
+    flex-basis: auto;
+
+    max-width: 100%;
+    margin-bottom: 0.188em;
+
+    font-size: 8em;
+  }
+
+  .intro__button {
+    flex-shrink: 0;
+    flex-basis: auto;
+    align-self: flex-start;
+  }
+
+  .intro__skip {
+    order: 1;
+    align-self: flex-end;
+
+    margin-right: auto;
+    margin-bottom: 2.125em;
+  }
+
+  .intro__hero {
+    order: 3;
+
+    width: 33.125em;
+    min-height: 38.563em;
+    margin: 0 calc((50% - 33.125em) / 2);
+    padding: 3.125em;
+
+    &::before,
+    &::after {
+      width: 14.5em;
+      height: 11em;
+    }
+
+    &::before {
+      top: 0;
+
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          $stripes-color,
+          $stripes-color 0.063em,
+          rgba(255, 255, 255, 0) 0.125em,
+          rgba(255, 255, 255, 0) 0.75em
+        );
+    }
+
+    &::after {
+      bottom: 0;
+
+      background-image:
+        repeating-linear-gradient(
+          -45deg,
+          $stripes-color,
+          $stripes-color 0.063em,
+          rgba(255, 255, 255, 0) 0.125em,
+          rgba(255, 255, 255, 0) 0.75em
+        );
+    }
+  }
+
+  .intro__image {
+    aspect-ratio: var(--desktop-aspect-ratio);
+  }
+
+  .intro__socials {
+    align-self: flex-end;
+
+    margin-left: 0;
+    margin-bottom: 1.875em;
+  }
+
+  @supports (display: grid) {
+    .intro__wrapper {
+      display: grid;
+      grid-template-columns:
+        [skip-start]
+        minmax(0, 1fr)
+        [skip-end inner-start]
+        repeat(4, minmax(0, 1fr))
+        [inner-end hero-start]
+        repeat(6, minmax(0, 1fr))
+        [hero-end socials-start]
+        minmax(0, 1fr)
+        [socials-end];
+      grid-template-rows:
+        [skip-start inner-start hero-start socials-start]
+        auto
+        [skip-end inner-end hero-end socials-end];
+    }
+
+    .intro__skip {
+      grid-area: skip;
+      justify-self: start;
+      align-self: end;
+
+      margin-right: 0;
+    }
+
+    .intro__inner {
+      grid-area: inner;
+
+      width: auto;
+    }
+
+    .intro__hero {
+      grid-area: hero;
+      justify-self: center;
+
+      margin: 0;
+    }
+
+    .intro__socials {
+      grid-area: socials;
+      align-self: end;
+    }
+  }
+}
