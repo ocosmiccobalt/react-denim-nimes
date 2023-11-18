@@ -13,3 +13,25 @@
     grid-row: 3;
   }
 }
+
+.page-footer__wrapper {
+  padding-top: 2.25em;
+  padding-bottom: 1.563em;
+}
+
+@media (min-width: $tablet-width) {
+  .page-footer__wrapper {
+    padding-top: 2.063em;
+    padding-right: 3.9%;
+    padding-left: 3.9%;
+
+    text-align: center;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .page-footer__wrapper {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
