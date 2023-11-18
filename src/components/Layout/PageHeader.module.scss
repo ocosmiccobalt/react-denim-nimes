@@ -1,9 +1,141 @@
+@use "../../assets/sass/variables" as *;
+
 .page-header {
   flex-shrink: 0;
+
+  background-color: $alt-bg-color;
 }
 
 @supports (display: grid) {
   .page-header {
     grid-row: 1;
+  }
+}
+
+.page-header__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.page-header__logo {
+  flex-shrink: 0;
+  flex-basis: auto;
+
+  display: block;
+  width: 100%;
+  margin: 0;
+
+  background-color: $body-bg-color;
+}
+
+.page-header__nav {
+  flex-shrink: 0;
+  flex-basis: auto;
+
+  width: 70%;
+}
+
+.page-header__user-tools {
+  flex-shrink: 0;
+  flex-basis: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+  width: 30%;
+}
+
+@media (min-width: $tablet-width) {
+  .page-header {
+    overflow-x: hidden;
+  }
+
+  .page-header__wrapper {
+    padding: 0 3.9%;
+  }
+
+  .page-header__logo {
+    position: relative;
+    z-index: 1;
+
+    margin-bottom: 0.625em;
+
+    &::before,
+    &::after {
+      content: "";
+
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 50%;
+      right: 50%;
+
+      height: 100%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+
+      background-color: $body-bg-color;
+    }
+  }
+
+  .page-header__nav {
+    width: 40%;
+
+    margin-right: auto;
+  }
+
+  .page-header__user-tools {
+    width: 25%;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .page-header {
+    background-color: transparent;
+
+    overflow: visible;
+  }
+
+  .page-header__wrapper {
+    position: relative;
+
+    padding: 0;
+  }
+
+  .page-header__logo {
+    position: static;
+
+    margin-bottom: 0;
+
+    background-color: transparent;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  .page-header__nav {
+    position: absolute;
+    left: 0;
+    top: 100%;
+
+    width: 9.58%;
+    margin-right: 0;
+    padding-top: 2em;
+  }
+
+  .page-header__user-tools {
+    position: absolute;
+    right: 0;
+    top: 100%;
+
+    flex-direction: column-reverse;
+    align-items: flex-end;
+
+    width: 9.58%;
+    padding-top: 2em;
   }
 }
