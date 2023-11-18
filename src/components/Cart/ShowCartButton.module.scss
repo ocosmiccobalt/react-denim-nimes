@@ -1,0 +1,94 @@
+@use "../../assets/sass/variables" as *;
+
+.show-cart-button {
+  position: relative;
+
+  flex-shrink: 0;
+  flex-basis: auto;
+  display: inline-flex;
+  align-items: flex-start;
+
+  width: 2.875em;
+  height: 4em;
+  padding: 1.5em 0.813em;
+  padding-right: 0.938em;
+
+  font-weight: 700;
+  line-height: 1.125;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: top;
+  color: inherit;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 0.2em;
+
+  cursor: pointer;
+  transition: 220ms ease-in-out;
+
+  &:hover,
+  &:active {
+    color: $state-color;
+  }
+
+  &:focus {
+    outline: 0.125em solid $state-color;
+    outline-offset: -0.125em;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 0.125em solid $state-color;
+    outline-offset: -0.125em;
+  }
+}
+
+.show-cart-button__icon {
+  flex-shrink: 0;
+  flex-basis: auto;
+
+  display: block;
+  width: 1.125em;
+  height: 1em;
+
+  stroke: currentColor;
+}
+
+.show-cart-button__amount {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: inline-block;
+  padding: 0.125em 0.188em;
+
+  vertical-align: top;
+  color: $body-bg-color;
+
+  background-color: $state-color;
+  border-radius: 0.2em;
+}
+
+@media (min-width: $tablet-width) {
+  .show-cart-button {
+    width: 3.5em;
+    padding: 1.438em 1.125em;
+  }
+
+  .show-cart-button__icon {
+    width: 1.25em;
+    height: 1.125em;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .show-cart-button {
+    height: 3.25em;
+    padding-top: 1.063em;
+    padding-bottom: 1.063em;
+  }
+}
