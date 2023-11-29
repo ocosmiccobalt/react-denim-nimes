@@ -77,6 +77,11 @@
   min-width: 12.5em;
 }
 
+.button--compact {
+  max-width: 100%;
+  width: 100%;
+}
+
 @media (min-width: $tablet-width) {
   .button--intro {
     min-width: 13.688em;
