@@ -31,33 +31,27 @@
   .#{$block}__label--bg {
     position: relative;
 
-    &[for="blue-gray"],
-    &[for="blue-gray-to-cart"] {
+    &[for$="d-blue-gray"] {
       color: $denim-blue-gray;
     }
 
-    &[for="navy"],
-    &[for="navy-to-cart"] {
+    &[for$="d-navy"] {
       color: $denim-navy;
     }
 
-    &[for="gray"],
-    &[for="gray-to-cart"] {
+    &[for$="d-gray"] {
       color: $denim-gray;
     }
 
-    &[for="coal"],
-    &[for="coal-to-cart"] {
+    &[for$="d-coal"] {
       color: $denim-coal;
     }
 
-    &[for="light-gray"],
-    &[for="light-gray-to-cart"] {
+    &[for$="d-light-gray"] {
       color: $denim-light-gray;
     }
 
-    &[for="blue"],
-    &[for="blue-to-cart"] {
+    &[for$="d-blue"] {
       color: $denim-blue;
     }
 
@@ -90,27 +84,27 @@
     }
   }
 
-  .#{$block}__input:checked + .#{$block}__label--bg::before {
+  input:checked + .#{$block}__label--bg::before {
     border-color: currentColor;
   }
 
-  .#{$block}__input:focus + .#{$block}__label--bg {
+  input:focus + .#{$block}__label--bg {
     outline: 0.125em solid $state-color;
   }
 
-  .#{$block}__input:focus:not(:focus-visible) + .#{$block}__label--bg {
+  input:focus:not(:focus-visible) + .#{$block}__label--bg {
     outline: none;
   }
 
-  .#{$block}__input:focus-visible + .#{$block}__label--bg {
+  input:focus-visible + .#{$block}__label--bg {
     outline: 0.125em solid $state-color;
   }
 
-  .#{$block}__input:focus:checked + .#{$block}__label--bg::before {
+  input:focus:checked + .#{$block}__label--bg::before {
     background-color: currentColor;
   }
 
-  .#{$block}__input:disabled + .#{$block}__label--bg {
+  input:disabled + .#{$block}__label--bg {
     background-image:
       repeating-linear-gradient(
         45deg,
@@ -123,7 +117,7 @@
     cursor: not-allowed;
   }
 
-  .#{$block}__input:disabled:checked + .#{$block}__label--bg {
+  input:disabled:checked + .#{$block}__label--bg {
     background-image: none;
   }
 }
@@ -136,28 +130,28 @@
     color: $faint-text-color;
   }
 
-  .#{$block}__input:checked + .#{$block}__label--text {
+  input:checked + .#{$block}__label--text {
     color: $heavy-text-color;
   }
 
-  .#{$block}__input:focus + .#{$block}__label--text {
+  input:focus + .#{$block}__label--text {
     outline: 0.125em solid $state-color;
   }
 
-  .#{$block}__input:focus:not(:focus-visible) + .#{$block}__label--text {
+  input:focus:not(:focus-visible) + .#{$block}__label--text {
     outline: none;
   }
 
-  .#{$block}__input:focus-visible + .#{$block}__label--text {
+  input:focus-visible + .#{$block}__label--text {
     outline: 0.125em solid $state-color;
   }
 
-  .#{$block}__input:focus:checked + .#{$block}__label--text {
+  input:focus:checked + .#{$block}__label--text {
     text-shadow: 0.071em 0.071em 0 $faint-text-color;
     box-shadow: inset 0 0 0 0.125rem $denim-light-gray, inset 0 0 0 0.25rem $faint-text-color;
   }
 
-  .#{$block}__input:disabled + .#{$block}__label--text {
+  input:disabled + .#{$block}__label--text {
     cursor: not-allowed;
   }
 }
