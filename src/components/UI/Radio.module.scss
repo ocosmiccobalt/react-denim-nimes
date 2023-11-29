@@ -1,0 +1,58 @@
+@use "../../assets/sass/variables" as *;
+@use "../../assets/sass/mixins" as *;
+
+.radio__label {
+  display: block;
+
+  &--filter {
+    max-width: 7.5em;
+    padding: 0.5em 1.071em;
+  }
+
+  &--item-color {
+    padding: 0.438em 0.563em;
+  }
+
+  &--item-size {
+    max-width: 7.5em;
+    padding: 0.286em 0.929em;
+
+    text-transform: uppercase;
+  }
+}
+
+input:not(:disabled) + .radio__label {
+  cursor: pointer;
+}
+
+@include label-with-background("radio");
+@include label-with-text("radio");
+
+@media (min-width: $tablet-width) {
+  .radio__label {
+    &--filter {
+      max-width: 6.429em;
+      padding-left: 0.929em;
+      padding-top: 0.429em;
+      padding-bottom: 0.429em;
+    }
+
+    &--item-color {
+      padding: 0.438em 0.75em;
+    }
+
+    &--item-size {
+      padding: 0.222em 0.556em;
+
+      font-size: 1.125em;
+    }
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .radio__label {
+    &--filter {
+      max-width: 7.5em;
+    }
+  }
+}
