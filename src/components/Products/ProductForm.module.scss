@@ -1,0 +1,73 @@
+@use "../../assets/sass/variables" as *;
+@use "../../assets/sass/mixins" as *;
+
+.product-form {
+  padding-bottom: 2.5em;
+
+  &--compact {
+    padding-bottom: 0;
+  }
+}
+
+.product-form__group {
+  margin: 0;
+  padding: 0;
+
+  border: none;
+}
+
+.product-form__subtitle {
+  float: left;
+
+  font: inherit;
+  pointer-events: none;
+}
+
+.product-form__list {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include reset-list();
+  margin: 0;
+  margin-bottom: 1.5em;
+
+  clear: both;
+}
+
+.product-form__item {
+  flex-shrink: 0;
+  flex-basis: auto;
+
+  margin-top: 0.875em;
+}
+
+.product-form__price {
+  margin: 0;
+  margin-bottom: 1.722em;
+
+  font-family: $work-sans-700-800-font-family;
+  font-weight: 700;
+  font-size: 1.125em;
+}
+
+@media (min-width: $tablet-width) {
+  .product-form__subtitle {
+    font-size: 1.125em;
+  }
+
+  .product-form__list {
+    margin-bottom: 1.75em;
+
+    &--color {
+      margin-left: -0.75em;
+    }
+
+    &--size {
+      margin-left: -0.625em;
+    }
+  }
+
+  .product-form__price {
+    margin-bottom: 2.556em;
+  }
+}
