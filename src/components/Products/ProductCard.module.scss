@@ -1,0 +1,127 @@
+@use "../../assets/sass/variables" as *;
+
+.card {
+  flex-shrink: 0;
+  flex-basis: auto;
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+}
+
+.card__title {
+  flex-shrink: 0;
+  flex-basis: auto;
+
+  max-width: 100%;
+  margin: 0;
+  margin-top: auto;
+  margin-bottom: 0.188em;
+
+  font: inherit;
+}
+
+.card__link {
+  display: inline-block;
+
+  text-decoration: none;
+  vertical-align: top;
+  color: inherit;
+
+  &[href] {
+    cursor: pointer;
+    transition: 220ms ease-in-out;
+  }
+
+  &[href]:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 0.125em solid $state-color;
+    outline-offset: 0.125em;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 0.125em solid $state-color;
+    outline-offset: 0.125em;
+  }
+}
+
+.card__price {
+  flex-shrink: 0;
+  flex-basis: auto;
+
+  max-width: 100%;
+  margin: 0;
+
+  font-family: $work-sans-700-800-font-family;
+  font-weight: 700;
+  font-size: 0.875em;
+  line-height: 1.143;
+}
+
+.card__illustration {
+  flex-shrink: 0;
+  flex-basis: auto;
+  order: -1;
+
+  width: 100%;
+  margin: 0;
+  margin-bottom: 0.688em;
+
+  &--negative-mt {
+    margin-top: -26.153%;
+  }
+}
+
+.card__image {
+  display: block;
+  width: 100%;
+
+  object-fit: cover;
+}
+
+
+@media (min-width: $tablet-width) {
+  .card__title {
+    margin-bottom: 0.333em;
+
+    font-size: 1.125em;
+    line-height: 1.313;
+  }
+
+  .card__price {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .card__illustration {
+    margin-bottom: 1.25em;
+
+    &--negative-mt {
+      margin-top: -18.21%;
+    }
+  }
+
+  .card__image {
+    aspect-ratio: var(--tablet-aspect-ratio);
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .card__illustration {
+    &--negative-mt {
+      margin-top: 0;
+    }
+  }
+
+  .card__image {
+    aspect-ratio: var(--desktop-aspect-ratio);
+  }
+}
