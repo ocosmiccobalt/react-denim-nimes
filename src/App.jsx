@@ -8,7 +8,7 @@ function App() {
     <>
       <PageHeader />
       <PageMain>
-        <Products />
+        <Products sectionId='products' />
       </PageMain>
       <PageFooter />
     </>

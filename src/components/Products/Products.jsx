@@ -22,7 +22,7 @@ const DUMMY_PRODUCTS = [
   { id: 9, title: 'Jacket', price: 85, availableColors: [COLORS[1], COLORS[5], COLORS[2]], largeCard: false, },
 ];
 
-function Products() {
+function Products({ sectionId }) {
   const itemClassName = `${classes.products__item} ${classes['products__item--catalog']}`;
 
   const items = DUMMY_PRODUCTS.map((p) => {
@@ -47,7 +47,10 @@ function Products() {
 });
 
   return (
-    <section className={`${classes.products} ${classes['products--catalog']}`}>
+    <section
+      className={`${classes.products} ${classes['products--catalog']}`}
+      id={sectionId}
+    >
       <h2 className="visually-hidden">Catalog</h2>
       <ul
         className={`${classes.products__list} ${classes['products__list--catalog']}`}
