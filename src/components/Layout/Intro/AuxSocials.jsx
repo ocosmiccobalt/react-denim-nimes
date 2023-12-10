@@ -1,4 +1,4 @@
-import socialsData from '../../data/socialsData.js';
+import socialsData from '../../../data/socialsData.js';
 import classes from './AuxSocials.module.scss';
 
 function AuxSocials({ className = '' }) {

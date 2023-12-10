@@ -1,7 +1,7 @@
 import Button from '../../UI/Button.jsx';
-import Skip from '../../UI/Skip.jsx';
+import Skip from './Skip.jsx';
 import Hero from './Hero.jsx';
-import AuxSocials from '../../UI/AuxSocials.jsx';
+import AuxSocials from './AuxSocials.jsx';
 import classes from './Intro.module.scss';
 
 function Intro() {

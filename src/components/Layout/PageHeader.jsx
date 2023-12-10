@@ -1,5 +1,5 @@
 import Logo from './Logo.jsx';
-import SiteList from '../UI/SiteList.jsx';
+import SiteList from './SiteList.jsx';
 import ShowCartButton from '../Cart/ShowCartButton.jsx';
 import Intro from './Intro/Intro.jsx';
 import classes from './PageHeader.module.scss';

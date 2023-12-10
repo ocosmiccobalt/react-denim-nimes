@@ -1,5 +1,5 @@
 import Logo from './Logo.jsx';
-import Socials from '../UI/Socials.jsx';
+import Socials from './Socials.jsx';
 import classes from './PageFooter.module.scss';
 
 function PageFooter() {
