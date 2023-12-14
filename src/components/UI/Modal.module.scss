@@ -1,0 +1,48 @@
+@use "../../assets/sass/variables" as *;
+
+.modal__backdrop {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background-color: rgba(43, 46, 56, 0.9);
+}
+
+.modal__window {
+  position: fixed;
+  z-index: 30;
+  top: 15vh;
+  bottom: 15vh;
+  left: 5%;
+
+  width: 90%;
+
+  background-color: $body-bg-color;
+  border-radius: 0.2em;
+
+  overflow: auto;
+
+  animation: slide-down 300ms ease-out forwards;
+}
+
+@media (min-width: $tablet-width) {
+  .modal__window {
+    left: calc(50% - 20rem);
+
+    width: 40rem;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
