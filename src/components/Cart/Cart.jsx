@@ -1,8 +1,22 @@
-import Modal from '../UI/Modal.jsx';
+import { forwardRef, useRef, useImperativeHandle } from 'react';
+import { createPortal } from 'react-dom';
+
 import Button from '../UI/Button.jsx';
 import classes from './Cart.module.scss';
 
-function Cart({ onClose }) {
+const Cart = forwardRef(function Cart({ onClose }, ref) {
+  const dialog = useRef();
+
+  useImperativeHandle(ref, () => {
+    return {
+      open() {
+        dialog.current.showModal();
+      }
+    };
+  });
+
+  const portalElement = document.getElementById('overlays');
+
   const cartItems = [{
     pId: 1,
     color: 'light-gray',
@@ -17,9 +31,13 @@ function Cart({ onClose }) {
     <li className={classes.cart__item} key={item.id}>{item.title}</li>
   ));
 
-  return (
-    <Modal onClose={onClose}>
-      <div className={classes.cart}>
+  function handleCloseCartClick() {
+    dialog.current.close();
+  }
+
+  return createPortal(
+    <dialog className={classes.cart} ref={dialog} onClose={onClose}>
+      <div className={classes.cart__content}>
         <h1 className={classes.cart__title}>Your cart</h1>
         <ul className={classes.cart__list} role="list">
           {cartItems}
@@ -31,7 +49,7 @@ function Cart({ onClose }) {
         <div>
           <button
             className={classes.cart__close}
-            onClick={onClose}
+            onClick={handleCloseCartClick}
             type="button"
             aria-label="Close the cart"
           >
@@ -40,8 +58,9 @@ function Cart({ onClose }) {
           <Button>Order</Button>
         </div>
       </div>
-    </Modal>
+    </dialog>,
+    portalElement
   );
-}
+});
 
 export default Cart;
