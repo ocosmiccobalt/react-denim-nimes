@@ -13,7 +13,7 @@ function PageHeader({ onShowCart }) {
           <SiteList />
         </nav>
         <div className={classes['page-header__user-tools']}>
-          <ShowCartButton onClick={onShowCart} amount="2" />
+          <ShowCartButton onClick={onShowCart} />
         </div>
       </div>
       <Intro />

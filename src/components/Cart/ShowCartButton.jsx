@@ -1,6 +1,13 @@
+import { useContext } from 'react';
+
+import CartContext from '../../store/cart-context.jsx';
 import classes from './ShowCartButton.module.scss';
 
-function ShowCartButton({ amount, onClick }) {
+function ShowCartButton({ onClick }) {
+  const cartCtx = useContext(CartContext);
+
+  const numberOfCartItems = cartCtx.items.reduce((num, item) => num += item.amount, 0);
+
   return (
     <button
       className={classes['show-cart-button']}
@@ -10,7 +17,7 @@ function ShowCartButton({ amount, onClick }) {
     >
       <span className={classes['show-cart-button__amount']}>
         <span className="visually-hidden">Amount of items:</span>
-        <span>{amount}</span>
+        <span>{numberOfCartItems}</span>
       </span>
       <svg
         className={classes['show-cart-button__icon']}
