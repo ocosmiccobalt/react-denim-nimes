@@ -1,5 +1,8 @@
+import { useContext } from 'react';
+
 import Picture from '../UI/Picture.jsx';
 import ProductForm from './ProductForm.jsx';
+import CartContext from '../../store/cart-context.jsx';
 import classes from './ProductCard.module.scss';
 
 function ProductCard({
@@ -31,7 +34,23 @@ function ProductCard({
   const PICTURE_STYLE = { '--tablet-aspect-ratio': '206 / 279', '--desktop-aspect-ratio': '9 / 10' };
   const LARGE_PICTURE_STYLE = { '--tablet-aspect-ratio': '221 / 336', '--desktop-aspect-ratio': '276 / 335' };
 
-  const productPrice = `$ ${price.toFixed(2)}`;
+  const cartCtx = useContext(CartContext);
+
+  function handleAddItemToCart(data) {
+    cartCtx.addItem({
+      pId: id,
+      color: data.color,
+      size: data.size,
+      get id() {
+        return [this.pId, this.color, this.size].toString();
+      },
+      amount: data.amount,
+      title: title,
+      price: price
+    });
+  }
+
+  const formattedPrice = `$ ${price.toFixed(2)}`;
 
   return (
     <article className={classes.card}>
@@ -41,7 +60,7 @@ function ProductCard({
         </a>
       </h3>
       <p className={classes.card__price}>
-        {productPrice}
+        {formattedPrice}
       </p>
       <p
         className={classes.card__illustration}
@@ -50,12 +69,12 @@ function ProductCard({
         <Picture
           srcName={`item-${id}${large ? '-large' : ''}`}
           size={large ? LARGE_PICTURE_SIZE : PICTURE_SIZE}
-          alt={`${title}, ${productPrice}`}
+          alt={`${title}, ${formattedPrice}`}
           imgClassName={classes.card__image}
           webWitals={webVitals}
         />
       </p>
-      <ProductForm id={id} colors={colors} />
+      <ProductForm id={id} colors={colors} onAddItemToCart={handleAddItemToCart} />
     </article>
   );
 }

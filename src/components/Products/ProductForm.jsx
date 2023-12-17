@@ -10,6 +10,7 @@ function ProductForm({
   id,
   colors = ['blue gray', 'navy', 'gray'],
   sizes = ['XS', 'S', 'M', 'L', 'XL'],
+  onAddItemToCart,
   compact = true
 }) {
   const [amountIsValid, setAmountIsValid] = useState(true);
@@ -24,6 +25,9 @@ function ProductForm({
     classes['product-form__subtitle'],
     compact ? 'visually-hidden' : '',
   ].join(' ');
+
+  const colorRadioName = id + '-color';
+  const sizeRadioName = id + '-size';
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -42,14 +46,19 @@ function ProductForm({
 
     const formData = new FormData(evt.target);
     const formObj = Object.fromEntries(formData.entries());
-    console.log(formObj);
+
+    onAddItemToCart({
+      color: formObj[colorRadioName],
+      size: formObj[sizeRadioName],
+      amount: enteredAmountNumber
+    });
   }
 
   const colorControls = colors.map((c, i) => {
-    const label = <span className='visually-hidden'>{c}</span>;
+    const label = <span className="visually-hidden">{c}</span>;
     const cString = c.trim().toLowerCase().split(' ').join('-');
     const input = {
-      name: id + '-color',
+      name: colorRadioName,
       id: id + '-d-' + cString,
       value: cString,
       defaultChecked: i === 0
@@ -68,7 +77,7 @@ function ProductForm({
 
   const sizeControls = sizes.map((s) => {
     const input = {
-      name: id + '-size',
+      name: sizeRadioName,
       id: id + '-' + s,
       value: s,
       defaultChecked: s === 'S'
