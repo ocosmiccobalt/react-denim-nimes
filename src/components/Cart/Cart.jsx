@@ -34,7 +34,9 @@ const Cart = forwardRef(function Cart({ onClose }, ref) {
 
   function handleCartItemRemove() {}
 
-  function handleCartItemAdd() {}
+  function handleCartItemAdd(item) {
+    cartCtx.addItem({ ...item, amount: 1 });
+  }
 
   const cartItems = cartCtx.items.map((item) => (
     <CartItem
