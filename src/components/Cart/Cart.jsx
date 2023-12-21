@@ -1,10 +1,18 @@
-import { forwardRef, useRef, useImperativeHandle } from 'react';
+import {
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+  useContext
+} from 'react';
 import { createPortal } from 'react-dom';
 
 import Button from '../UI/Button.jsx';
+import CartContext from '../../store/cart-context.jsx';
+import CartItem from './CartItem.jsx';
 import classes from './Cart.module.scss';
 
 const Cart = forwardRef(function Cart({ onClose }, ref) {
+  const cartCtx = useContext(CartContext);
   const dialog = useRef();
 
   useImperativeHandle(ref, () => {
@@ -17,34 +25,40 @@ const Cart = forwardRef(function Cart({ onClose }, ref) {
 
   const portalElement = document.getElementById('overlays');
 
-  const cartItems = [{
-    pId: 1,
-    color: 'light-gray',
-    size: 'L',
-    get id() {
-      return [this.pId, this.color, this.size].toString();
-    },
-    title: 'Jacket',
-    price: 40,
-    amount: 1,
-  }].map((item) => (
-    <li className={classes.cart__item} key={item.id}>{item.title}</li>
-  ));
+  const total = `$ ${cartCtx.total.toFixed(2)}`;
+  const hasItems = cartCtx.items.length > 0;
 
   function handleCloseCartClick() {
     dialog.current.close();
   }
 
+  function handleCartItemRemove() {}
+
+  function handleCartItemAdd() {}
+
+  const cartItems = cartCtx.items.map((item) => (
+    <CartItem
+      key={item.id}
+      title={item.title}
+      color={item.color}
+      size={item.size}
+      price={item.price}
+      amount={item.amount}
+      onRemove={handleCartItemRemove.bind(null, item.id)}
+      onAdd={handleCartItemAdd.bind(null, item)}
+    />
+  ));
+
   return createPortal(
     <dialog className={classes.cart} ref={dialog} onClose={onClose}>
       <div className={classes.cart__content}>
-        <h1 className={classes.cart__title}>Your cart</h1>
+        <h2 className={classes.cart__title}>Your cart</h2>
         <ul className={classes.cart__list} role="list">
           {cartItems}
         </ul>
         <p className={classes.cart__summary}>
           <span>Total:{' '}</span>
-          <span>$ 40.00</span>
+          <span>{total}</span>
         </p>
         <div>
           <button
@@ -55,7 +69,7 @@ const Cart = forwardRef(function Cart({ onClose }, ref) {
           >
             &times;
           </button>
-          <Button>Order</Button>
+          {hasItems && <Button>Order</Button>}
         </div>
       </div>
     </dialog>,
