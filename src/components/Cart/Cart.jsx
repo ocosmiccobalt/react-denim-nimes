@@ -32,7 +32,9 @@ const Cart = forwardRef(function Cart({ onClose }, ref) {
     dialog.current.close();
   }
 
-  function handleCartItemRemove() {}
+  function handleCartItemRemove(id) {
+    cartCtx.removeItem(id);
+  }
 
   function handleCartItemAdd(item) {
     cartCtx.addItem({ ...item, amount: 1 });
