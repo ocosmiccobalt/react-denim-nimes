@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "title": "Jacket",
+    "price": 40,
+    "availableColors": [
+      "light gray",
+      "navy",
+      "blue"
+    ],
+    "largeCard": false
+  },
+  {
+    "id": 2,
+    "title": "Jacket",
+    "price": 70,
+    "availableColors": [
+      "blue",
+      "light gray",
+      "gray"
+    ],
+    "largeCard": false
+  },
+  {
+    "id": 3,
+    "title": "Jacket",
+    "price": 60,
+    "availableColors": [
+      "gray",
+      "coal",
+      "blue gray"
+    ],
+    "largeCard": false
+  },
+  {
+    "id": 4,
+    "title": "Jacket",
+    "price": 50,
+    "availableColors": [
+      "navy",
+      "coal",
+      "blue"
+    ],
+    "largeCard": false
+  },
+  {
+    "id": 5,
+    "title": "Jacket",
+    "price": 160,
+    "availableColors": [
+      "navy",
+      "blue gray",
+      "blue"
+    ],
+    "largeCard": true
+  },
+  {
+    "id": 6,
+    "title": "Jacket",
+    "price": 40,
+    "availableColors": [
+      "light gray",
+      "blue",
+      "coal"
+    ],
+    "largeCard": false
+  },
+  {
+    "id": 7,
+    "title": "Jacket",
+    "price": 110,
+    "availableColors": [
+      "gray",
+      "blue gray",
+      "navy"
+    ],
+    "largeCard": false
+  },
+  {
+    "id": 8,
+    "title": "Jacket",
+    "price": 35,
+    "availableColors": [
+      "blue",
+      "coal",
+      "blue gray"
+    ],
+    "largeCard": false
+  },
+  {
+    "id": 9,
+    "title": "Jacket",
+    "price": 85,
+    "availableColors": [
+      "navy",
+      "blue",
+      "gray"
+    ],
+    "largeCard": false
+  }
+]
