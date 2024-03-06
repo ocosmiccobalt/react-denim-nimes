@@ -155,3 +155,38 @@
     cursor: not-allowed;
   }
 }
+
+@mixin dialog-button() {
+  width: 1.563em;
+  height: 1.563em;
+  padding: 0;
+
+  font-size: 2em;
+  color: inherit;
+
+  background-color: transparent;
+  border: 0.031em solid $faint-text-color;
+
+  cursor: pointer;
+  transition: outline 220ms ease-in-out;
+
+  &:focus {
+    border-color: transparent;
+
+    outline: 0.25rem solid $state-color;
+    outline-offset: -0.25rem;
+  }
+
+  &:focus:not(:focus-visible) {
+    border-color: $faint-text-color;
+
+    outline: none;
+  }
+
+  &:focus-visible {
+    border-color: transparent;
+
+    outline: 0.25rem solid $state-color;
+    outline-offset: -0.25rem;
+  }
+}
