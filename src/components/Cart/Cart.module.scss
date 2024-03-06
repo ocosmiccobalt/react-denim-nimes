@@ -1,74 +1,9 @@
 @use "../../assets/sass/variables" as *;
 @use "../../assets/sass/mixins" as *;
 
-@keyframes slide-in-from-top {
-  0% {
-    transform: translateY(-15%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.cart {
-  width: 80%;
-  padding: 1em;
-
-  background-color: $body-bg-color;
-  border: none;
-  border-radius: 0.2em;
-
-  &[open] {
-    animation: slide-in-from-top 0.35s ease-out;
-  }
-
-  &::backdrop {
-    background-color: rgba(43, 46, 56, 0.9);
-  }
-}
-
-.cart__content {
-  position: relative;
-
-  padding: 4em 1em 2em;
-}
-
 .cart__button,
 .cart__close {
-  width: 1.563em;
-  height: 1.563em;
-  padding: 0;
-
-  font-size: 2em;
-  color: inherit;
-
-  background-color: transparent;
-  border: 0.031em solid $faint-text-color;
-
-  cursor: pointer;
-  transition: outline 220ms ease-in-out;
-
-  &:focus {
-    border-color: transparent;
-
-    outline: 0.25rem solid $state-color;
-    outline-offset: -0.25rem;
-  }
-
-  &:focus:not(:focus-visible) {
-    border-color: $faint-text-color;
-
-    outline: none;
-  }
-
-  &:focus-visible {
-    border-color: transparent;
-
-    outline: 0.25rem solid $state-color;
-    outline-offset: -0.25rem;
-  }
+  @include dialog-button();
 }
 
 .cart__close {
@@ -175,11 +110,6 @@
 }
 
 @media (min-width: $tablet-width) {
-  .cart__content {
-    padding-right: 2em;
-    padding-left: 2em;
-  }
-
   .cart__name {
     margin-bottom: 0.333em;
 
@@ -197,11 +127,6 @@
 }
 
 @media (min-width: $desktop-width) {
-  .cart__content {
-    padding-right: 4em;
-    padding-left: 4em;
-  }
-
   .cart__list {
     display: flex;
     flex-wrap: wrap;
