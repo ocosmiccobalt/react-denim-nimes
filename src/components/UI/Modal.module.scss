@@ -1,0 +1,58 @@
+@use "../../assets/sass/variables" as *;
+@use "../../assets/sass/mixins" as *;
+
+@keyframes slide-in-from-top {
+  0% {
+    transform: translateY(-15%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal {
+  width: 80%;
+  padding: 1em;
+
+  background-color: $body-bg-color;
+  border: none;
+  border-radius: 0.2em;
+
+  &[open] {
+    animation: slide-in-from-top 0.35s ease-out;
+  }
+
+  &::backdrop {
+    background-color: rgba(43, 46, 56, 0.9);
+  }
+}
+
+.modal__content {
+  position: relative;
+
+  padding: 4em 1em 2em;
+}
+
+.modal__close {
+  position: absolute;
+  top: 0.031em;
+  right: 0.031em;
+
+  @include dialog-button();
+}
+
+@media (min-width: $tablet-width) {
+  .modal__content {
+    padding-right: 2em;
+    padding-left: 2em;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .modal__content {
+    padding-right: 4em;
+    padding-left: 4em;
+  }
+}
