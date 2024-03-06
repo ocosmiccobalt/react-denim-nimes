@@ -4,7 +4,7 @@ import ShowCartButton from '../Cart/ShowCartButton.jsx';
 import Intro from './Intro/Intro.jsx';
 import classes from './PageHeader.module.scss';
 
-function PageHeader({ onShowCart }) {
+function PageHeader() {
   return (
     <header className={classes['page-header']}>
       <div className={`${classes['page-header__wrapper']} wrapper`}>
@@ -13,7 +13,7 @@ function PageHeader({ onShowCart }) {
           <SiteList />
         </nav>
         <div className={classes['page-header__user-tools']}>
-          <ShowCartButton onClick={onShowCart} />
+          <ShowCartButton />
         </div>
       </div>
       <Intro />
