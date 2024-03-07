@@ -58,6 +58,10 @@ function cartReducer(state, action) {
     };
   }
 
+  if (action.type === 'CLEAR') {
+    return defaultCartState;
+  }
+
   return defaultCartState;
 }
 
@@ -72,11 +76,16 @@ function CartProvider({ children }) {
     dispatchCartAction({ type: 'REMOVE', id: id });
   }
 
+  function handleClearCart() {
+    dispatchCartAction({ type: 'CLEAR' });
+  }
+
   const cartContext = {
     items: cartState.items,
     total: cartState.total,
     addItem: handleAddItemToCart,
-    removeItem: handleRemoveItemFromCart
+    removeItem: handleRemoveItemFromCart,
+    clearCart: handleClearCart
   };
 
   return (
