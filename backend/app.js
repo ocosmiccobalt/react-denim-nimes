@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 
 import bodyParser from 'body-parser';
 import express from 'express';
+import { v4 as uuidv4 } from 'uuid';
 
 const app = express();
 
@@ -49,7 +50,7 @@ app.post('/orders', async (req, res) => {
 
   const newOrder = {
     ...orderData,
-    id: (Math.random() * 1000).toString(),
+    id: uuidv4(),
   };
   const orders = await fs.readFile('./data/orders.json', 'utf8');
   const allOrders = JSON.parse(orders);
