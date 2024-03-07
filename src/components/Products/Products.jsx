@@ -1,31 +1,15 @@
-import { useState, useEffect } from 'react';
-
 import ProductCard from './ProductCard.jsx';
+import useHttp from '../../hooks/use-http.js';
 import classes from './Products.module.scss';
 
+const requestConfig = {};
+
 function Products({ sectionId }) {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [httpError, setHttpError] = useState();
-
-  useEffect(() => {
-    async function fetchProducts() {
-      const response = await fetch('http://localhost:3000/products');
-
-      if (!response.ok) {
-        throw new Error('Something went wrong, failed to fetch products.');
-      }
-
-      const loadedProducts = await response.json();
-      setProducts(loadedProducts);
-      setIsLoading(false);
-    }
-
-    fetchProducts().catch((error) => {
-      setHttpError(error.message || 'Something went wrong.')
-      setIsLoading(false);
-    });
-  }, []);
+  const {
+    data: products,
+    isLoading,
+    error: httpError
+  } = useHttp('http://localhost:3000/products', requestConfig, []);
 
   if (isLoading) {
     return (
