@@ -23,6 +23,10 @@ function useHttp(url, config, initialData) {
     setData(initialData);
   }
 
+  function clearError() {
+    setError(null);
+  }
+
   const sendRequest = useCallback(
     async function sendRequest(data) {
       setIsLoading(true);
@@ -50,6 +54,7 @@ function useHttp(url, config, initialData) {
     isLoading,
     error,
     clearData,
+    clearError,
     sendRequest
   };
 }
