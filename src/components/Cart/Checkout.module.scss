@@ -1,0 +1,45 @@
+@use "../../assets/sass/variables" as *;
+@use "../../assets/sass/mixins" as *;
+
+.checkout__close {
+  position: absolute;
+  top: 0.031em;
+  right: 0.031em;
+
+  @include dialog-button();
+}
+
+.checkout__title {
+  margin: 0;
+  margin-bottom: 1em;
+  padding-top: 0.5em;
+
+  @include title-font();
+  text-align: center;
+}
+
+.checkout__total {
+  margin-top: 0;
+  margin-bottom: 1.5em;
+  padding-top: 1em;
+
+  font-family: $work-sans-700-800-font-family;
+  font-weight: 700;
+}
+
+.checkout__description {
+  margin-top: 0;
+  margin-bottom: 1.5em;
+  padding-top: 1em;
+
+  & + & {
+    padding-top: 0;
+  }
+}
+
+.checkout__list {
+  margin: 0;
+  margin-bottom: 0.75em;
+
+  @include reset-list();
+}
