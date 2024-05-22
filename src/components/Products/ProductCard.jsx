@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import Picture from '../UI/Picture.jsx';
+import Picture from '../UI/Picture/Picture.jsx';
 import ProductForm from './ProductForm.jsx';
 import CartContext from '../../store/cart-context.jsx';
 import classes from './ProductCard.module.scss';

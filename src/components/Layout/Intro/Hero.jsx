@@ -1,4 +1,4 @@
-import Picture from '../../UI/Picture.jsx';
+import Picture from '../../UI/Picture/Picture.jsx';
 
 function Hero({ className = '', imgClassName = '' }) {
   const size = {
