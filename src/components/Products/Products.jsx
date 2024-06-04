@@ -38,7 +38,7 @@ function Products({ sectionId }) {
         <ProductCard
           id={p.id}
           title={p.title}
-          price={p.price}
+          price={parseFloat(p.price)}
           colors={p.availableColors}
           large={p.largeCard}
         />

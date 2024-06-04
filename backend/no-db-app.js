@@ -4,8 +4,6 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import { v4 as uuidv4 } from 'uuid';
 
-import { default as db } from './data/database.js';
-
 const app = express();
 
 app.use(bodyParser.json());
@@ -19,21 +17,8 @@ app.use((req, res, next) => {
 });
 
 app.get('/products', async (req, res) => {
-  const query = `
-    SELECT
-    m.id,
-    m.title,
-    m.price,
-    m.large_card AS largeCard,
-    JSON_ARRAYAGG(c.name) AS availableColors
-    FROM models AS m
-    INNER JOIN models_colors AS mc ON m.id = mc.model_id
-    INNER JOIN colors AS c ON mc.color_id = c.id
-    GROUP BY m.id
-    ORDER BY m.id
-  `;
-  const [products] = await db.query(query);
-  res.json(products);
+  const products = await fs.readFile('./data/available-products.json', 'utf8');
+  res.json(JSON.parse(products));
 });
 
 app.post('/orders', async (req, res) => {
