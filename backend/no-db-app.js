@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/products', async (req, res) => {
-  const products = await fs.readFile('./data/available-products.json', 'utf8');
+  const products = await fs.readFile('./data/json/available-products.json', 'utf8');
   res.json(JSON.parse(products));
 });
 
@@ -52,10 +52,10 @@ app.post('/orders', async (req, res) => {
     ...orderData,
     id: uuidv4(),
   };
-  const orders = await fs.readFile('./data/orders.json', 'utf8');
+  const orders = await fs.readFile('./data/json/orders.json', 'utf8');
   const allOrders = JSON.parse(orders);
   allOrders.push(newOrder);
-  await fs.writeFile('./data/orders.json', JSON.stringify(allOrders));
+  await fs.writeFile('./data/json/orders.json', JSON.stringify(allOrders));
   res.status(201).json({ message: 'Order created!' });
 });
 
