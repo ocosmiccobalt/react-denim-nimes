@@ -1,5 +1,3 @@
-import fs from 'node:fs/promises';
-
 import bodyParser from 'body-parser';
 import express from 'express';
 import { v4 as uuidv4 } from 'uuid';
@@ -63,14 +61,58 @@ app.post('/orders', async (req, res) => {
     });
   }
 
-  const newOrder = {
-    ...orderData,
-    id: uuidv4(),
-  };
-  const orders = await fs.readFile('./data/orders.json', 'utf8');
-  const allOrders = JSON.parse(orders);
-  allOrders.push(newOrder);
-  await fs.writeFile('./data/orders.json', JSON.stringify(allOrders));
+  const orderId = uuidv4();
+  const newOrder = [
+    orderId,
+    orderData.total,
+    orderData.customer.name,
+    orderData.customer.email,
+    orderData.customer.street,
+    orderData.customer['postal-code'],
+    orderData.customer.city
+  ];
+
+  const orderQuery = `
+    INSERT INTO orders (
+      id,
+      total,
+      customer_name,
+      email,
+      street,
+      postal_code,
+      city
+    ) VALUES (?)
+  `;
+
+  const orderedItems = [];
+
+  for (const item of orderData.items) {
+    orderedItems.push([
+      orderId,
+      item.pId,
+      item.color,
+      item.size,
+      item.amount,
+      item.title,
+      item.price
+    ]);
+  }
+
+  const itemQuery = `
+    INSERT INTO ordered_items (
+      order_id,
+      model_id,
+      color_name,
+      size_abbr,
+      amount,
+      title,
+      price
+    ) VALUES ?
+  `;
+
+  await db.query(orderQuery, [newOrder]);
+  await db.query(itemQuery, [orderedItems]);
+
   res.status(201).json({ message: 'Order created!' });
 });
 

@@ -51,6 +51,7 @@ function Checkout() {
       {
         order: {
           items: cartCtx.items,
+          total: cartCtx.total,
           customer: customerData
         }
       }
