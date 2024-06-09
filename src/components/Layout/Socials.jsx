@@ -1,8 +1,8 @@
-import socialsData from '../../data/socials-data.js';
+import SOCIAL_DATA from '../../data/social-data.js';
 import classes from './Socials.module.scss';
 
 function Socials() {
-  const socials = socialsData.map((item) => (
+  const socials = SOCIAL_DATA.map((item) => (
     <li key={item.id} className={classes.socials__item}>
       <a
         className={classes.socials__link}
