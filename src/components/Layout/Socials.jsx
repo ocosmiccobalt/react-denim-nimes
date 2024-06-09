@@ -1,4 +1,4 @@
-import socialsData from '../../data/socialsData.js';
+import socialsData from '../../data/socials-data.js';
 import classes from './Socials.module.scss';
 
 function Socials() {
