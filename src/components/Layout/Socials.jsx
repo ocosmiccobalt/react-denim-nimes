@@ -3,20 +3,23 @@ import classes from './Socials.module.scss';
 
 function Socials() {
   const socials = SOCIAL_DATA.map((item) => (
-    <li key={item.id} className={classes.socials__item}>
+    <li
+      key={item.id}
+      className={classes.socials__item}
+    >
       <a
         className={classes.socials__link}
-        rel="noopener noreferrer"
+        rel='noopener noreferrer'
         href={item.url}
-        target="_blank"
+        target='_blank'
+        aria-label={item.title}
       >
-        <span className="visually-hidden">{item.title}</span>
         <svg
           className={`${classes.socials__icon} ${classes['socials__icon' + item.id]}`}
           width={item.w}
           height={item.h}
-          aria-hidden="true"
-          focusable="false"
+          aria-hidden='true'
+          focusable='false'
         >
           <use xlinkHref={`#icon-${item.id}`}></use>
         </svg>
@@ -25,7 +28,10 @@ function Socials() {
   ));
 
   return (
-    <ul className={classes.socials} role="list">
+    <ul
+      className={classes.socials}
+      role='list'
+    >
       {socials}
     </ul>
   );

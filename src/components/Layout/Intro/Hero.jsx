@@ -1,24 +1,35 @@
 import Picture from '../../UI/Picture/Picture.jsx';
 
-function Hero({ className = '', imgClassName = '' }) {
-  const size = {
-    mWidth: 202,
-    mHeight: 249,
-    tWidth: 264,
-    tHeight: 319,
-    dWidth: 430,
-    dHeight: 517
-  };
+const STYLE = {
+  '--tablet-aspect-ratio': '24 / 29',
+  '--desktop-aspect-ratio': '430 / 517'
+};
 
+const PICTURE_SIZE = {
+  mWidth: 202,
+  mHeight: 249,
+  tWidth: 264,
+  tHeight: 319,
+  dWidth: 430,
+  dHeight: 517
+};
+
+const ALT = 'Confident girl wearing denim jacket.';
+const SRC_NAME = 'hero';
+
+function Hero({
+  className = '',
+  imgClassName = ''
+}) {
   return (
     <p
       className={className}
-      style={{ '--tablet-aspect-ratio': '24 / 29', '--desktop-aspect-ratio': '430 / 517' }}
+      style={STYLE}
     >
       <Picture
-        srcName='hero'
-        size={size}
-        alt="Confident girl wearing denim jacket."
+        srcName={SRC_NAME}
+        size={PICTURE_SIZE}
+        alt={ALT}
         imgClassName={imgClassName}
         webWitals={{ fetchpriority: 'high' }}
       />

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import UserProgressContext from './user-progress-context';
+import UserProgressContext from './user-progress-context.jsx';
 
 function UserProgressProvider({ children }) {
   const [userProgress, setUserProgress] = useState('');

@@ -2,13 +2,16 @@ import { useContext } from 'react';
 
 import CartContext from '../../store/cart-context.jsx';
 import UserProgressContext from '../../store/user-progress-context.jsx';
+import CHECKOUT_FORM_CONTROLS from '../../data/checkout-form-controls.js';
 import Modal from '../UI/Modal.jsx';
 import Input from '../UI/Input.jsx';
 import Button from '../UI/Button.jsx';
 import useHttp from '../../hooks/use-http.js';
 import classes from './Checkout.module.scss';
 
-const requestConfig = {
+const HOST = 'http://localhost:3000';
+
+const REQUEST_CONFIG = {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
@@ -26,7 +29,7 @@ function Checkout() {
     clearData,
     clearError,
     sendRequest
-  } = useHttp('http://localhost:3000/orders', requestConfig);
+  } = useHttp(HOST + '/orders', REQUEST_CONFIG);
 
   const total = `$ ${cartCtx.total.toFixed(2)}`;
 
@@ -60,17 +63,25 @@ function Checkout() {
 
   const actions = (
     <div>
-      <Button type="submit">Submit Order</Button>
+      <Button type='submit'>Submit Order</Button>
       <button
         className={classes.checkout__close}
         onClick={handleCloseCheckout}
-        type="button"
-        aria-label="Close the checkout"
+        type='button'
+        aria-label='Close the checkout'
       >
         &times;
       </button>
     </div>
   );
+
+  const controls = CHECKOUT_FORM_CONTROLS.map((c) => (
+    <Input
+      key={c.label}
+      label={c.label}
+      input={c.input}
+    />
+  ));
 
   let modal = (
     <Modal
@@ -83,12 +94,11 @@ function Checkout() {
           <span>Total:{' '}</span>
           <span>{total}</span>
         </p>
-        <ul className={classes.checkout__list}>
-          <Input label='Full Name' input={{ type: 'text', id: 'name', name: 'name' }} />
-          <Input label='Email Address' input={{ type: 'email', id: 'email', name: 'email' }} />
-          <Input label='Street' input={{ type: 'text', id: 'street', name: 'street' }} />
-          <Input label='Postal Code' input={{ type: 'text', id: 'postal-code', name: 'postal-code' }} />
-          <Input label='City' input={{ type: 'text', id: 'city', name: 'city' }} />
+        <ul
+          className={classes.checkout__list}
+          role='list'
+        >
+          {controls}
         </ul>
 
         {error && <p style={{ textAlign: 'center' }}>Failed to submit order. {error}</p>}

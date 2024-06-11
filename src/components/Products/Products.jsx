@@ -2,14 +2,16 @@ import ProductCard from './ProductCard.jsx';
 import useHttp from '../../hooks/use-http.js';
 import classes from './Products.module.scss';
 
-const requestConfig = {};
+const HOST = 'http://localhost:3000';
+const REQUEST_CONFIG = {};
+const INITIAL_DATA = [];
 
 function Products({ sectionId }) {
   const {
     data: products,
     isLoading,
     error: httpError
-  } = useHttp('http://localhost:3000/products', requestConfig, []);
+  } = useHttp(HOST + '/products', REQUEST_CONFIG, INITIAL_DATA);
 
   if (isLoading) {
     return (
@@ -23,12 +25,21 @@ function Products({ sectionId }) {
     );
   }
 
+  const sectionClassName = `${classes.products} ${classes['products--catalog']}`;
+  const listClassName = `${classes.products__list} ${classes['products__list--catalog']}`;
   const itemClassName = `${classes.products__item} ${classes['products__item--catalog']}`;
 
   const items = products.map((p) => {
     const className = p.largeCard ?
       itemClassName + ` ${classes['products__item--large']}` :
       itemClassName;
+
+    /*
+      For some reason MySQL query returns price
+      (inserted as NUMERIC)
+      as string
+    */
+    const priceAsNumber = parseFloat(p.price);
 
     return (
       <li
@@ -38,7 +49,7 @@ function Products({ sectionId }) {
         <ProductCard
           id={p.id}
           title={p.title}
-          price={parseFloat(p.price)}
+          price={priceAsNumber}
           colors={p.availableColors}
           large={p.largeCard}
         />
@@ -48,13 +59,13 @@ function Products({ sectionId }) {
 
   return (
     <section
-      className={`${classes.products} ${classes['products--catalog']}`}
+      className={sectionClassName}
       id={sectionId}
     >
-      <h2 className="visually-hidden">Catalog</h2>
+      <h2 className='visually-hidden'>Catalog</h2>
       <ul
-        className={`${classes.products__list} ${classes['products__list--catalog']}`}
-        role="list"
+        className={listClassName}
+        role='list'
       >
         {items}
       </ul>

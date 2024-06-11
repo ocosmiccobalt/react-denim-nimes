@@ -17,11 +17,11 @@ function Sources({
   let sourceOptions = options;
 
   if (isFallbackType) {
-    sourceOptions = options.filter((obj) => obj.media && obj.suffix !== '-mobile');
+    sourceOptions = options.filter((o) => o.media && o.suffix !== '-mobile');
   }
 
-  return sourceOptions.map((obj, i) => {
-    const { media, suffix, width, height } = obj;
+  const sources = sourceOptions.map((o, i) => {
+    const { media, suffix, width, height } = o;
     let mediaProp;
 
     if (media) {
@@ -46,6 +46,8 @@ function Sources({
       />
     );
   });
+
+  return sources;
 }
 
 export default Sources;

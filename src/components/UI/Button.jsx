@@ -13,7 +13,7 @@ function Button({
   return (
     <button
       className={`${classes.button} ${subClass} ${className}`}
-      type={type || "button"}
+      type={type || 'button'}
       onClick={onClick}
       disabled={disabled}
     >

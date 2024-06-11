@@ -11,35 +11,32 @@ function CartItem({
 }) {
   const formattedPrice = `$ ${price.toFixed(2)}`;
   const formattedColor = color.split('-').join(' ');
+  const colorClass = `${classes.cart__color} ${classes['cart__color--' + color]}`;
 
   return (
     <li className={classes.cart__item}>
       <h3 className={classes.cart__name}>
         {title}
         {', '}
-        <span className={`${classes.cart__color} ${classes['cart__color--' + color]}`}>
-          {formattedColor}
-        </span>
+        <span className={colorClass}>{formattedColor}</span>
         {', '}
-        <span>
-          size: {size}
-        </span>
+        <span>size: {size}</span>
       </h3>
       <p className={classes.cart__price}>{formattedPrice}</p>
       <p className={classes.cart__amount}>Amount: {amount}</p>
       <div className={classes.cart__buttons}>
         <button
           className={classes.cart__button}
-          type="button"
-          aria-label="Minus one"
+          type='button'
+          aria-label='Minus one'
           onClick={onRemove}
         >
           -
         </button>
         <button
           className={classes.cart__button}
-          type="button"
-          aria-label="Plus one"
+          type='button'
+          aria-label='Plus one'
           onClick={onAdd}
         >
           +

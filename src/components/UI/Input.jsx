@@ -12,10 +12,17 @@ const Input = forwardRef(function Input(
 ) {
   return (
     <Container className={`${classes.input} ${className}`}>
-      <label className={classes.input__label} htmlFor={input.id}>
+      <label
+        className={classes.input__label}
+        htmlFor={input.id}
+      >
         {label}
       </label>
-      <input className={classes.input__field} ref={ref} {...input} />
+      <input
+        className={classes.input__field}
+        ref={ref}
+        {...input}
+      />
     </Container>
   );
 });

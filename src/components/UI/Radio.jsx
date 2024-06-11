@@ -18,8 +18,8 @@ function Radio({
   return (
     <Container className={className}>
       <input
-        className="visually-hidden"
-        type="radio"
+        className='visually-hidden'
+        type='radio'
         name={name}
         id={id}
         value={value}

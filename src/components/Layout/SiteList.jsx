@@ -2,7 +2,10 @@ import classes from './SiteList.module.scss';
 
 function SiteList() {
   return (
-    <ul className={classes['site-list']} role="list">
+    <ul
+      className={classes['site-list']}
+      role='list'
+    >
       <li className={classes['site-list__item']}>
         <a className={classes['site-list__link']}>Woman</a>
       </li>

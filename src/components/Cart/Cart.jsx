@@ -49,7 +49,10 @@ function Cart() {
       onClose={userProgressCtx.progress === 'cart' ? handleCloseCart : null}
     >
       <h2 className={classes.cart__title}>Your cart</h2>
-      <ul className={classes.cart__list} role="list">
+      <ul
+        className={classes.cart__list}
+        role='list'
+      >
         {cartItems}
       </ul>
       <p className={classes.cart__summary}>
@@ -60,8 +63,8 @@ function Cart() {
         <button
           className={classes.cart__close}
           onClick={handleCloseCart}
-          type="button"
-          aria-label="Close the cart"
+          type='button'
+          aria-label='Close the cart'
         >
           &times;
         </button>

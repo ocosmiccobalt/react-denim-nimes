@@ -6,17 +6,11 @@ import classes from './ShowCartButton.module.scss';
 
 function ShowCartButton() {
   const [isHighlighted, setIsHighlighted] = useState(false);
-  const cartCtx = useContext(CartContext);
-  const { items } = cartCtx;
-  const userProgressCtx = useContext(UserProgressContext);
-
-  const numberOfCartItems = items.reduce((num, item) => num += item.amount, 0);
-
   const buttonClasses = `${classes['show-cart-button']} ${isHighlighted ? classes.bump : ''}`;
 
-  function handleShowCart() {
-    userProgressCtx.showCart();
-  }
+  const cartCtx = useContext(CartContext);
+  const { items } = cartCtx;
+  const numberOfCartItems = items.reduce((num, item) => num += item.amount, 0);
 
   useEffect(() => {
     if (items.length === 0) {
@@ -34,24 +28,30 @@ function ShowCartButton() {
     };
   }, [items]);
 
+  const userProgressCtx = useContext(UserProgressContext);
+
+  function handleShowCart() {
+    userProgressCtx.showCart();
+  }
+
   return (
     <button
       className={buttonClasses}
-      type="button"
+      type='button'
       onClick={handleShowCart}
-      aria-label="Open the cart"
+      aria-label='Open the cart'
     >
       <span className={classes['show-cart-button__amount']}>
         {numberOfCartItems}
       </span>
       <svg
         className={classes['show-cart-button__icon']}
-        width="20"
-        height="18"
-        aria-hidden="true"
-        focusable="false"
+        width='20'
+        height='18'
+        aria-hidden='true'
+        focusable='false'
       >
-        <use xlinkHref="#icon-cart"></use>
+        <use xlinkHref='#icon-cart'></use>
       </svg>
     </button>
   );

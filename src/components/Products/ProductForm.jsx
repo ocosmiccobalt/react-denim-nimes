@@ -4,12 +4,14 @@ import Input from '../UI/Input.jsx';
 import Button from '../UI/Button.jsx';
 import classes from './ProductForm.module.scss';
 
+const DEFAULT_COLORS = ['blue gray', 'navy', 'gray'];
+const SIZES = ['XS', 'S', 'M', 'L', 'XL'];
 const LEGENDS = ['Color', 'Size'];
 
 function ProductForm({
   id,
-  colors = ['blue gray', 'navy', 'gray'],
-  sizes = ['XS', 'S', 'M', 'L', 'XL'],
+  colors = DEFAULT_COLORS,
+  sizes = SIZES,
   onAddItemToCart,
   compact = true
 }) {
@@ -55,8 +57,9 @@ function ProductForm({
   }
 
   const colorControls = colors.map((c, i) => {
-    const label = <span className="visually-hidden">{c}</span>;
+    const label = <span className='visually-hidden'>{c}</span>;
     const cString = c.trim().toLowerCase().split(' ').join('-');
+
     const input = {
       name: colorRadioName,
       id: id + '-d-' + cString,
@@ -112,11 +115,14 @@ function ProductForm({
   );
 
   const fieldsets = LEGENDS.map((legend) => (
-    <fieldset key={legend} className={classes['product-form__group']}>
+    <fieldset
+      key={legend}
+      className={classes['product-form__group']}
+    >
       <legend className={legendClassName}>{legend}</legend>
       <ul
         className={classes['product-form__list']}
-        role="list"
+        role='list'
         style={compact ? { marginBottom: 0 } : undefined}
       >
         {(legend === 'Color') && colorControls}
@@ -128,13 +134,16 @@ function ProductForm({
   return (
     <form
       className={formClassName}
-      method="post"
+      method='post'
       onSubmit={handleSubmit}
-      aria-label="Choose color, size, and amount"
+      aria-label='Choose color, size, and amount'
     >
       {fieldsets}
       {amountControl}
-      <Button modifier={compact ? 'compact' : 'product-form'} type="submit">
+      <Button
+        modifier={compact ? 'compact' : 'product-form'}
+        type='submit'
+      >
         + Add
       </Button>
       {!amountIsValid && <p>Please enter a valid amount (1-5).</p>}
