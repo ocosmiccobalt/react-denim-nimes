@@ -51,27 +51,15 @@
 
 .socials__icon {
   display: inline-block;
+  width: 1.25em;
   height: 1.25em;
 
   vertical-align: top;
 
   fill: currentColor;
 
-  &--tiktok {
-    width: 1.25em;
-  }
-
-  &--youtube {
-    width: 1.25em;
-  }
-
   &--pinterest {
     width: 1.313em;
-  }
-
-  &--twitter {
-    width: 1.375em;
-    height: 1.125em;
   }
 }
 
