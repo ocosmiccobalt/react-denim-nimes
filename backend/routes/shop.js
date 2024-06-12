@@ -78,7 +78,7 @@ router.post('/orders', async (req, res) => {
   for (const item of orderData.items) {
     orderedItems.push([
       orderId,
-      item.pId,
+      item.productId,
       item.color,
       item.size,
       item.amount,

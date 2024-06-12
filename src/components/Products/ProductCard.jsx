@@ -48,11 +48,11 @@ function ProductCard({
 
   function handleAddItemToCart(data) {
     cartCtx.addItem({
-      pId: id,
+      productId: id,
       color: data.color,
       size: data.size,
       get id() {
-        return [this.pId, this.color, this.size].toString();
+        return [this.productId, this.color, this.size].toString();
       },
       amount: data.amount,
       title: title,
