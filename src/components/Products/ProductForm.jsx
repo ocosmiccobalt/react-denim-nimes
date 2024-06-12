@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+
 import Radio from '../UI/Radio.jsx';
 import Input from '../UI/Input.jsx';
 import Button from '../UI/Button.jsx';
@@ -63,7 +64,7 @@ function ProductForm({
     const input = {
       name: colorRadioName,
       id: id + '-d-' + cString,
-      value: cString,
+      value: c, // It must be unchanged color name to allow db query to work properly!
       defaultChecked: i === 0
     };
 

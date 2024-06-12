@@ -10,15 +10,15 @@ function CartItem({
   onRemove
 }) {
   const formattedPrice = `$ ${price.toFixed(2)}`;
-  const formattedColor = color.split('-').join(' ');
-  const colorClass = `${classes.cart__color} ${classes['cart__color--' + color]}`;
+  const modifier = color.trim().toLowerCase().split(' ').join('-');
+  const colorClass = `${classes.cart__color} ${classes['cart__color--' + modifier]}`;
 
   return (
     <li className={classes.cart__item}>
       <h3 className={classes.cart__name}>
         {title}
         {', '}
-        <span className={colorClass}>{formattedColor}</span>
+        <span className={colorClass}>{color}</span>
         {', '}
         <span>size: {size}</span>
       </h3>
