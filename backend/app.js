@@ -3,18 +3,14 @@ import express from 'express';
 
 import { default as productsRoutes } from './routes/products.routes.js';
 import { default as ordersRoutes } from './routes/orders.routes.js';
+import enableCors from './middlewares/cors.js';
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-});
+app.use(enableCors);
 
 app.use('/products', productsRoutes);
 app.use('/orders', ordersRoutes);
