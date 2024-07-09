@@ -1,7 +1,8 @@
 import bodyParser from 'body-parser';
 import express from 'express';
 
-import { default as shopRoutes } from './routes/shop.js';
+import { default as productsRoutes } from './routes/products.routes.js';
+import { default as ordersRoutes } from './routes/orders.routes.js';
 
 const app = express();
 
@@ -15,7 +16,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(shopRoutes);
+app.use('/products', productsRoutes);
+app.use('/orders', ordersRoutes);
 
 app.use((req, res) => {
   if (req.method === 'OPTIONS') {
