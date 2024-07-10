@@ -1,7 +1,7 @@
 import { TYPES, PIXEL_DENSITY_DESCRIPTORS, getSrc, getSrcSet } from './util.js';
 import Sources from './Sources.jsx';
 
-const HOST = 'http://localhost:3000';
+const HOST = '/';
 const OPTIONS = [
   { media: '(min-width: 75rem)', suffix: '-desktop' },
   { media: '(min-width: 48rem)', suffix: '-tablet' },
@@ -22,7 +22,7 @@ function Picture({
   imgClassName = '',
   webWitals = {}
 }) {
-  const srcStart = HOST + '/img/' + srcName;
+  const srcStart = HOST + 'img/' + srcName;
 
   const options = noMedia ? NO_MEDIA_OPTIONS : OPTIONS;
 
