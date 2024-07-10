@@ -8,7 +8,6 @@ import enableCors from './middlewares/cors.js';
 const app = express();
 
 app.use(bodyParser.json());
-app.use(express.static('public'));
 
 app.use(enableCors);
 
