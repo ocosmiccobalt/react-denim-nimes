@@ -9,7 +9,9 @@ import Button from '../UI/Button.jsx';
 import useHttp from '../../hooks/use-http.js';
 import classes from './Checkout.module.scss';
 
-const HOST = 'http://localhost:3000';
+const SERVER = import.meta.env.PROD ?
+  import.meta.env.VITE_BACKEND_PROD_SERVER :
+  import.meta.env.VITE_BACKEND_DEV_SERVER;
 
 const REQUEST_CONFIG = {
   method: 'POST',
@@ -29,7 +31,7 @@ function Checkout() {
     clearData,
     clearError,
     sendRequest
-  } = useHttp(HOST + '/orders', REQUEST_CONFIG);
+  } = useHttp(SERVER + '/orders', REQUEST_CONFIG);
 
   const total = `$ ${cartCtx.total.toFixed(2)}`;
 

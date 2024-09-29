@@ -2,7 +2,10 @@ import ProductCard from './ProductCard.jsx';
 import useHttp from '../../hooks/use-http.js';
 import classes from './Products.module.scss';
 
-const HOST = 'http://localhost:3000';
+const SERVER = import.meta.env.PROD ?
+  import.meta.env.VITE_BACKEND_PROD_SERVER :
+  import.meta.env.VITE_BACKEND_DEV_SERVER;
+
 const REQUEST_CONFIG = {};
 const INITIAL_DATA = [];
 
@@ -11,7 +14,7 @@ function Products({ sectionId }) {
     data: products,
     isLoading,
     error: httpError
-  } = useHttp(HOST + '/products', REQUEST_CONFIG, INITIAL_DATA);
+  } = useHttp(SERVER + '/products', REQUEST_CONFIG, INITIAL_DATA);
 
   if (isLoading) {
     return (
